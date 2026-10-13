@@ -7,12 +7,12 @@
 <meta name="google-site-verification" content="LOSXsZBOLtsS_0UJziLJOx76pGKAXK6D4Hu864cuCBM">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8045229464055968"
      crossorigin="anonymous"></script>
-<title>11. 무인 자동 실행 (고급) - 매크로 사용 설명서</title>
+<title>12. 무인 자동 실행 (고급) - 매크로 사용 설명서</title>
 <meta name="description" content="--auto 옵션의 번호별 의미와 여러 기능 순차 실행, Windows 작업 스케줄러 등록 방법을 설명합니다.">
 <link rel="canonical" href="https://gadget-guide.github.io/manual-auto">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="매크로 사용 설명서">
-<meta property="og:title" content="11. 무인 자동 실행 (고급) - 매크로 사용 설명서">
+<meta property="og:title" content="12. 무인 자동 실행 (고급) - 매크로 사용 설명서">
 <meta property="og:description" content="--auto 옵션의 번호별 의미와 여러 기능 순차 실행, Windows 작업 스케줄러 등록 방법을 설명합니다.">
 <meta property="og:url" content="https://gadget-guide.github.io/manual-auto">
 <link rel="stylesheet" href="style.css">
@@ -38,8 +38,9 @@
 <li><a class="ch-link" href="manual-playlist.html"><span class="num">8.</span>재생목록(📃 노래) 사용법</a></li>
 <li><a class="ch-link" href="manual-starplanet.html"><span class="num">9.</span>스타플래닛(⭐ 젤리) 사용법</a></li>
 <li><a class="ch-link" href="manual-celebchamp.html"><span class="num">10.</span>셀럽챔프(🏆 장미) 사용법</a></li>
-<li><a class="ch-link current" href="manual-auto.html"><span class="num">11.</span>무인 자동 실행</a></li>
-<li><a class="ch-link" href="manual-faq.html"><span class="num">12.</span>문제 해결 / FAQ</a></li>
+<li><a class="ch-link" href="manual-ktopstar.html"><span class="num">11.</span>K-탑스타(🎫 티켓) 사용법</a></li>
+<li><a class="ch-link current" href="manual-auto.html"><span class="num">12.</span>무인 자동 실행</a></li>
+<li><a class="ch-link" href="manual-faq.html"><span class="num">13.</span>문제 해결 / FAQ</a></li>
 </ol>
 <p class="nav-group">가이드</p>
 <ul>
@@ -61,7 +62,7 @@
         <p class="eyebrow">사용 설명서</p>
       </header>
 <section class="block" id="auto">
-  <h2>11. 무인 자동 실행 (고급)</h2>
+  <h2>12. 무인 자동 실행 (고급)</h2>
   <p>실행 파일을 <code>--auto</code> 옵션과 함께 실행하면, 창이 뜨자마자 사람이 아무것도 누르지
   않아도 자동으로 매크로를 시작합니다(등록해둔 계정과 체크해둔 카테고리/미션/옵션을 그대로 사용).
   이걸 Windows 작업 스케줄러에 등록해두면 정해진 시간에 PC가 알아서 실행하게 만들 수 있습니다.</p>
@@ -76,6 +77,7 @@
       <tr><th><code>--auto 2</code></th><td>유튜브만</td></tr>
       <tr><th><code>--auto 3</code></th><td>스타플래닛만</td></tr>
       <tr><th><code>--auto 4</code></th><td>셀럽챔프만</td></tr>
+      <tr><th><code>--auto 5</code></th><td>K-탑스타만 (v2.1.5부터)</td></tr>
       <tr><th><code>--auto 3,4</code></th><td>스타플래닛 → 셀럽챔프 (적은 순서대로 하나씩)</td></tr>
     </tbody>
   </table>
@@ -85,7 +87,7 @@
     <code>--auto 4,3</code>이면 셀럽챔프를 먼저 합니다. 쉼표 앞뒤에 띄어쓰기를 넣지 마세요.</li>
     <li>스타플래닛과 셀럽챔프는 v2.0.8부터 자동 실행에 포함됩니다. 휴대폰이 USB로 연결되어 있어야 합니다.</li>
     <li>재생목록은 자동 실행 대상이 아닙니다.</li>
-    <li>1~4가 아닌 값을 넣으면 번호를 안 붙인 것으로 보고 브랜드평판 → 유튜브를 실행합니다.</li>
+    <li>1~5가 아닌 값을 넣으면 번호를 안 붙인 것으로 보고 브랜드평판 → 유튜브를 실행합니다.</li>
     <li>모두 끝나면 로그창 맨 아래에 기능별 결과를 합친 전체 요약이 한 번 더 찍힙니다.</li>
   </ul>
 
@@ -93,8 +95,9 @@
     <strong class="tag">먼저 확인</strong>
     실행이 끝나도 창이 저절로 닫히지는 않습니다 — 로그에 결과가 남은 채로 계속 떠 있습니다. 브랜드평판과
     유튜브를 같은 시간에 따로 돌리고 싶다면 작업을 두 개 만들어 각각 <code>--auto 1</code>,
-    <code>--auto 2</code>로 등록하면 됩니다. 휴대폰을 쓰는 3번과 4번은 휴대폰이 한 대이므로 동시에 돌리지 말고
-    <code>--auto 3,4</code>처럼 이어서 실행하세요.
+    <code>--auto 2</code>로 등록하면 됩니다. 휴대폰을 쓰는 3번, 4번, 5번은 휴대폰이 한 대이므로 동시에 돌리지 말고
+    <code>--auto 3,4</code>처럼 이어서 실행하세요. 5번(K-탑스타)은 동영상 광고 대기 때문에 몇 시간씩 걸릴 수
+    있으니 맨 뒤에 두는 편이 좋습니다.
   </div>
 
   <h3>자동 실행 중의 업데이트</h3>
@@ -151,9 +154,9 @@
   <p>절전 모드, 화면 잠금, 휴대폰 화면 꺼짐처럼 무인 실행에서 자주 걸리는 부분은
   <a href="guide-unattended.html">매일 자동으로 돌릴 때 준비</a>에 따로 정리했습니다.</p>
 </section>
-      <div class="page-nav-footer"><a class="prev" href="manual-celebchamp.html"><span class="dir">← 이전</span>10. 셀럽챔프(🏆 장미) 사용법</a><a class="next" href="manual-faq.html"><span class="dir">다음 →</span>12. 문제 해결 / FAQ</a></div>
+      <div class="page-nav-footer"><a class="prev" href="manual-ktopstar.html"><span class="dir">← 이전</span>11. K-탑스타(🎫 티켓) 사용법</a><a class="next" href="manual-faq.html"><span class="dir">다음 →</span>13. 문제 해결 / FAQ</a></div>
       <footer class="page-foot">
-        <p>마지막 수정 <time datetime="2026-10-13">2026-10-13</time> · 프로그램 최신 버전 v2.1.4</p>
+        <p>마지막 수정 <time datetime="2026-10-13">2026-10-13</time> · 프로그램 최신 버전 v2.1.5</p>
         <p><a href="about.html">소개 · 문의</a> · <a href="changelog.html">업데이트 내역</a> ·
         <a href="privacy.html">개인정보처리방침</a></p>
       </footer>
