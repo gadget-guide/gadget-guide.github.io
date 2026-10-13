@@ -5,7 +5,7 @@ _src/pages/*.html(본문 조각) + _src/style.css + _src/manual-assets/ 를 읽�
 밑줄로 시작하는 _src/ 는 배포에서 빠진다.
 
     python build.py                          # 사이트 다시 만들기
-    python build.py --changelog <프로그램 저장소 경로>   # 업데이트 내역도 git 기록에서 새로 뽑기
+    python build.py --changelog              # 업데이트 내역도 프로그램 저장소의 git 기록에서 새로 뽑기
 
 페이지를 추가하려면 _src/pages/ 에 본문 조각을 만들고 아래 PAGES 에 한 줄을 넣는다.
 최상단의 *.html, style.css, manual-assets/ 는 생성물이니 직접 고치지 않는다.
@@ -310,5 +310,15 @@ def build(changelog_repo=None):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    parser.add_argument("--changelog", metavar="REPO", help="프로그램 저장소 경로(업데이트 내역을 git 기록에서 다시 뽑는다)")
-    build(parser.parse_args().changelog)
+    parser.add_argument(
+        "--changelog", metavar="REPO", nargs="?", const="",
+        help="업데이트 내역을 프로그램 저장소의 git 기록에서 다시 뽑는다(경로를 생략하면 .program-repo 파일에 적힌 경로)",
+    )
+    repo = parser.parse_args().changelog
+    if repo == "":
+        # 경로는 PC마다 다르므로 저장소에 올리지 않는 .program-repo 파일에 한 줄로 적어 둔다.
+        local = ROOT / ".program-repo"
+        if not local.exists():
+            raise SystemExit(".program-repo 파일에 프로그램 저장소 경로를 한 줄로 적어 주세요.")
+        repo = (ROOT / local.read_text(encoding="utf-8").strip()).resolve()
+    build(repo)

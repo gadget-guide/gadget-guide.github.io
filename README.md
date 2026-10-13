@@ -15,9 +15,11 @@ https://gadget-guide.github.io 에 배포되는 사용 설명서 사이트입니
 
 ```bash
 python build.py                              # 본문만 고쳤을 때
-python build.py --changelog <프로그램 저장소 경로> # 새 버전을 배포해 업데이트 내역도 갱신할 때
+python build.py --changelog                  # 새 버전을 배포해 업데이트 내역도 갱신할 때
 git add -A && git commit -m "..." && git push
 ```
+
+`--changelog` 는 `.program-repo` 파일(이 PC에만 두고 저장소에는 올리지 않음)에 적힌 프로그램 저장소 경로를 읽습니다.
 
 `main` 브랜치에 푸시하면 GitHub Pages 가 최상단을 그대로 배포합니다. `_src/` 는 밑줄로 시작해서, `build.py` 와 이 파일은 `_config.yml` 의 `exclude` 로 배포에서 빠집니다.
 
