@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-adsense-account" content="ca-pub-9181621892668352">
+<meta name="google-site-verification" content="LOSXsZBOLtsS_0UJziLJOx76pGKAXK6D4Hu864cuCBM">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9181621892668352"
+     crossorigin="anonymous"></script>
+<title>휴대폰이 PC에 연결되지 않을 때 점검 순서 - 매크로 사용 설명서</title>
+<meta name="description" content="USB 디버깅을 켰는데도 PC가 휴대폰을 찾지 못할 때 케이블, 포트, 허용 팝업, 드라이버 순서로 원인을 좁히는 방법입니다.">
+<link rel="canonical" href="https://gadget-guide.github.io/guide-connection">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="매크로 사용 설명서">
+<meta property="og:title" content="휴대폰이 PC에 연결되지 않을 때 점검 순서 - 매크로 사용 설명서">
+<meta property="og:description" content="USB 디버깅을 켰는데도 PC가 휴대폰을 찾지 못할 때 케이블, 포트, 허용 팝업, 드라이버 순서로 원인을 좁히는 방법입니다.">
+<meta property="og:url" content="https://gadget-guide.github.io/guide-connection">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page-shell">
+    <input type="checkbox" id="navToggle" class="nav-toggle-checkbox">
+    <div class="mobile-topbar">
+      <label for="navToggle" class="nav-toggle-btn" aria-label="목차 열기">☰</label>
+      <span class="mobile-topbar-title">매크로 사용 설명서</span>
+    </div>
+    <nav class="sidenav">
+<a class="brand" href="index.html">매크로 사용 설명서</a>
+<p class="nav-group">사용 설명서</p>
+<ol>
+<li><a class="ch-link" href="manual-start.html"><span class="num">1.</span>시작하기 전에</a></li>
+<li><a class="ch-link" href="manual-install.html"><span class="num">2.</span>설치와 첫 실행</a></li>
+<li><a class="ch-link" href="manual-layout.html"><span class="num">3.</span>화면 구성 한눈에 보기</a></li>
+<li><a class="ch-link" href="manual-account.html"><span class="num">4.</span>계정 등록하기</a></li>
+<li><a class="ch-link" href="manual-adb.html"><span class="num">5.</span>안드로이드 앱 매크로 연결하기</a></li>
+<li><a class="ch-link" href="manual-brand.html"><span class="num">6.</span>브랜드평판(📊 추천) 사용법</a></li>
+<li><a class="ch-link" href="manual-youtube.html"><span class="num">7.</span>유튜브(▶ 좋아요) 사용법</a></li>
+<li><a class="ch-link" href="manual-playlist.html"><span class="num">8.</span>재생목록(📃 노래) 사용법</a></li>
+<li><a class="ch-link" href="manual-starplanet.html"><span class="num">9.</span>스타플래닛(⭐ 젤리) 사용법</a></li>
+<li><a class="ch-link" href="manual-celebchamp.html"><span class="num">10.</span>셀럽챔프(🏆 장미) 사용법</a></li>
+<li><a class="ch-link" href="manual-auto.html"><span class="num">11.</span>무인 자동 실행</a></li>
+<li><a class="ch-link" href="manual-faq.html"><span class="num">12.</span>문제 해결 / FAQ</a></li>
+</ol>
+<p class="nav-group">가이드</p>
+<ul>
+<li><a class="ch-link" href="guide-usb-debugging.html">제조사별 USB 디버깅 켜는 법</a></li>
+<li><a class="ch-link current" href="guide-connection.html">휴대폰 연결이 안 될 때</a></li>
+<li><a class="ch-link" href="guide-playlist-patterns.html">재생목록 패턴 고르기</a></li>
+<li><a class="ch-link" href="guide-unattended.html">매일 자동으로 돌릴 때 준비</a></li>
+</ul>
+<p class="nav-group">사이트</p>
+<ul>
+<li><a class="ch-link" href="changelog.html">업데이트 내역</a></li>
+<li><a class="ch-link" href="about.html">소개 · 문의</a></li>
+<li><a class="ch-link" href="privacy.html">개인정보처리방침</a></li>
+</ul>
+    </nav>
+    <label for="navToggle" class="nav-backdrop" aria-hidden="true"></label>
+    <main class="main-col">
+      <header class="page-head">
+        <p class="eyebrow">가이드</p>
+      </header>
+<section class="block" id="connection">
+  <h1>휴대폰이 PC에 연결되지 않을 때 점검 순서</h1>
+  <p class="lead">USB 디버깅을 켰는데도 프로그램이 휴대폰을 찾지 못한다면, 아래 순서대로 하나씩 확인해 보세요.
+  흔한 원인부터 차례로 적었습니다. 대부분은 1번이나 2번에서 해결됩니다.</p>
+
+  <h2>먼저 로그 문구를 확인하세요</h2>
+  <p>프로그램 하단 로그창에 나오는 문구에 따라 볼 곳이 다릅니다.</p>
+  <div class="table-scroll">
+  <table class="info">
+    <thead><tr><th>로그 문구</th><th>뜻</th><th>볼 곳</th></tr></thead>
+    <tbody>
+      <tr><th>연결된 안드로이드 기기가 없습니다</th><td>PC가 휴대폰을 전혀 인식하지 못했습니다.</td><td>1번부터 순서대로</td></tr>
+      <tr><th>휴대폰에서 USB 디버깅을 허용해주세요</th><td>인식은 됐지만 휴대폰에서 허용하지 않았습니다.</td><td>3번</td></tr>
+      <tr><th>실행 도중 연결이 끊겼다는 문구</th><td>케이블 접촉이 불안정하거나 다른 프로그램과 충돌합니다.</td><td>1번, 5번</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2>1. 케이블과 포트</h2>
+  <ul>
+    <li><strong>충전 전용 케이블인지 확인합니다.</strong> 케이블을 꽂았을 때 휴대폰이 충전만 되고 PC의 파일 탐색기에
+    휴대폰이 나타나지 않으면 충전 전용 케이블일 가능성이 높습니다. 휴대폰을 살 때 들어 있던 케이블이나 포장에
+    "데이터 전송"이라고 적힌 케이블로 바꿔 보세요.</li>
+    <li><strong>PC 본체의 포트에 직접 꽂습니다.</strong> USB 허브, 모니터나 키보드에 달린 포트, 본체 앞면 포트는
+    전력이나 신호가 약해 연결이 끊기는 일이 있습니다. 데스크톱은 뒷면 포트가 가장 안정적입니다.</li>
+    <li><strong>단자를 끝까지 밀어 넣습니다.</strong> 케이스가 두꺼우면 단자가 덜 들어가는 경우가 있습니다.</li>
+  </ul>
+
+  <h2>2. 휴대폰 쪽 설정</h2>
+  <ul>
+    <li>화면을 켜고 잠금을 푼 상태에서 케이블을 다시 꽂습니다.</li>
+    <li>알림창을 내려 USB 연결 방식이 "충전만"으로 되어 있으면 <strong>파일 전송</strong>으로 바꿉니다.</li>
+    <li>개발자 옵션에서 USB 디버깅이 여전히 켜져 있는지 확인합니다. 시스템 업데이트 뒤에 꺼지는 기종이 있습니다.</li>
+    <li>삼성은 자동 차단, 샤오미는 "USB 디버깅(보안 설정)"을 확인합니다.
+    <a href="guide-usb-debugging.html">제조사별 USB 디버깅 켜는 법</a>에 설명이 있습니다.</li>
+  </ul>
+
+  <h2>3. 허용 팝업</h2>
+  <p>"USB 디버깅을 허용하시겠습니까?" 팝업에서 허용을 누르지 않았거나, 화면이 꺼진 사이 팝업이 지나갔을 수
+  있습니다.</p>
+  <ol>
+    <li>개발자 옵션에서 <span class="path">USB 디버깅 권한 승인 취소</span>를 누릅니다.</li>
+    <li>케이블을 뺐다가 다시 꽂습니다.</li>
+    <li>다시 뜨는 팝업에서 <strong>이 컴퓨터에서 항상 허용</strong>을 체크하고 허용을 누릅니다.</li>
+  </ol>
+
+  <h2>4. PC 드라이버</h2>
+  <p>Windows 10과 11은 대부분의 휴대폰을 자동으로 인식합니다. 다만 케이블과 설정이 모두 정상인데도 인식되지
+  않는다면 드라이버 문제일 수 있습니다.</p>
+  <ul>
+    <li><span class="path">장치 관리자</span>(시작 버튼 오른쪽 클릭)를 열어 노란 느낌표가 붙은 "알 수 없는 장치"나
+    "ADB Interface"가 있는지 봅니다.</li>
+    <li>있다면 휴대폰 제조사 홈페이지에서 USB 드라이버를 받아 설치합니다. 삼성은 "Samsung Android USB Driver",
+    그 밖의 제조사는 각 회사의 PC 연결 프로그램에 드라이버가 들어 있습니다.</li>
+    <li>설치한 뒤에는 케이블을 다시 꽂고, 그래도 안 되면 PC를 재부팅합니다.</li>
+  </ul>
+
+  <h2>5. 다른 프로그램과의 충돌</h2>
+  <p>휴대폰 화면을 PC로 미러링하는 프로그램, 안드로이드 앱플레이어, 개발 도구처럼 휴대폰과 같은 방식으로
+  통신하는 프로그램이 함께 실행 중이면 서로 연결을 빼앗아 중간에 끊길 수 있습니다. 이런 프로그램을 종료하고
+  다시 시도하세요. 휴대폰도 한 번에 한 대만 연결해 주세요.</p>
+
+  <h2>6. 직접 확인해 보기 (고급)</h2>
+  <p>프로그램 폴더에는 휴대폰과 통신하는 도구(adb)가 들어 있습니다. 명령 프롬프트로 PC가 휴대폰을 어떻게
+  인식하고 있는지 직접 볼 수 있습니다.</p>
+  <ol>
+    <li>프로그램 폴더 안의 <code>_internal\assets\platform-tools</code> 폴더를 파일 탐색기로 엽니다.</li>
+    <li>주소창에 <code>cmd</code>를 입력하고 Enter를 누르면 그 폴더에서 명령 프롬프트가 열립니다.</li>
+    <li><code>adb devices</code>를 입력합니다.</li>
+  </ol>
+  <div class="table-scroll">
+  <table class="info">
+    <thead><tr><th>결과</th><th>뜻과 조치</th></tr></thead>
+    <tbody>
+      <tr><th>일련번호 뒤에 <code>device</code></th><td>정상입니다. 프로그램에서 바로 쓸 수 있습니다.</td></tr>
+      <tr><th>일련번호 뒤에 <code>unauthorized</code></th><td>휴대폰에서 허용하지 않았습니다. 3번을 따라 하세요.</td></tr>
+      <tr><th>일련번호 뒤에 <code>offline</code></th><td>연결이 불안정합니다. 케이블을 다시 꽂거나 휴대폰을 재부팅하세요.</td></tr>
+      <tr><th>아무것도 나오지 않음</th><td>PC가 휴대폰을 인식하지 못했습니다. 1번, 2번, 4번을 확인하세요.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2>연결은 되는데 동작이 이상할 때</h2>
+  <ul>
+    <li><strong>화면이 켜지지 않거나 잠금 화면에서 멈춥니다.</strong> PIN이나 패턴은 프로그램이 풀 수 없습니다.
+    실행 전에 직접 잠금을 풀어 두세요.</li>
+    <li><strong>검색어 입력에서 멈춥니다.</strong> 한글 입력용 보조 키보드 앱이 설치되지 않은 경우입니다. 휴대폰에
+    설치 허용을 묻는 창이 떠 있는지 확인하세요. 샤오미 계열은 "USB를 통해 설치"가 켜져 있어야 합니다.</li>
+    <li><strong>엉뚱한 곳을 누릅니다.</strong> 휴대폰을 가로로 돌려 두었거나 화면 분할, 팝업 창 모드를 쓰는 중이면
+    위치가 어긋납니다. 세로 화면, 전체 화면 상태로 두세요.</li>
+  </ul>
+
+  <p>여기까지 확인해도 해결되지 않으면 휴대폰 기종, 로그창의 마지막 몇 줄, <code>adb devices</code> 결과를 함께
+  보내 문의해 주세요. 문의 방법은 <a href="about.html">소개 · 문의</a>에 있습니다.</p>
+</section>
+      
+      <footer class="page-foot">
+        <p>마지막 수정 <time datetime="2026-10-13">2026-10-13</time> · 프로그램 최신 버전 v2.1.4</p>
+        <p><a href="about.html">소개 · 문의</a> · <a href="changelog.html">업데이트 내역</a> ·
+        <a href="privacy.html">개인정보처리방침</a></p>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
