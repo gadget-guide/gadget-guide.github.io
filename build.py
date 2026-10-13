@@ -26,7 +26,7 @@ OUT = ROOT
 # 호스팅 주소가 바뀌면 여기만 고친다(canonical, sitemap, robots 에 쓰인다).
 SITE_URL = "https://gadget-guide.github.io"
 SITE_NAME = "매크로 사용 설명서"
-ADSENSE_CLIENT = "ca-pub-9181621892668352"
+ADSENSE_CLIENT = "ca-pub-8045229464055968"
 # 구글 서치 콘솔 소유권 확인 값
 GOOGLE_SITE_VERIFICATION = "LOSXsZBOLtsS_0UJziLJOx76pGKAXK6D4Hu864cuCBM"
 # 소개·문의 페이지에 공개할 연락처(HTML). 비워두면 "관리자에게 문의" 안내만 나온다.
