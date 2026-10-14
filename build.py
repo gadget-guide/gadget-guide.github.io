@@ -29,6 +29,8 @@ SITE_NAME = "매크로 사용 설명서"
 ADSENSE_CLIENT = "ca-pub-8045229464055968"
 # 구글 서치 콘솔 소유권 확인 값
 GOOGLE_SITE_VERIFICATION = "LOSXsZBOLtsS_0UJziLJOx76pGKAXK6D4Hu864cuCBM"
+# 네이버 서치어드바이저 소유권 확인 값
+NAVER_SITE_VERIFICATION = "fdc2751c64a3b82509633b708060fccd6d006bb8"
 # 소개·문의 페이지에 공개할 연락처(HTML). 비워두면 "관리자에게 문의" 안내만 나온다.
 CONTACT_HTML = ""
 
@@ -188,6 +190,7 @@ TEMPLATE = """<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="google-adsense-account" content="{adsense}">
 <meta name="google-site-verification" content="{site_verification}">
+<meta name="naver-site-verification" content="{naver_verification}">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={adsense}"
      crossorigin="anonymous"></script>
 <title>{full_title}</title>
@@ -271,6 +274,7 @@ def build(changelog_repo=None):
         page = TEMPLATE.format(
             adsense=ADSENSE_CLIENT,
             site_verification=GOOGLE_SITE_VERIFICATION,
+            naver_verification=NAVER_SITE_VERIFICATION,
             full_title=SITE_NAME if slug == "index" else f"{title} - {SITE_NAME}",
             description=html.escape(description, quote=True),
             url=page_url(slug),
