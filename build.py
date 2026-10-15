@@ -191,6 +191,8 @@ TEMPLATE = """<!DOCTYPE html>
 <meta name="google-adsense-account" content="{adsense}">
 <meta name="google-site-verification" content="{site_verification}">
 <meta name="naver-site-verification" content="{naver_verification}">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={adsense}"
      crossorigin="anonymous"></script>
 <title>{full_title}</title>
@@ -249,6 +251,8 @@ def build(changelog_repo=None):
         shutil.rmtree(OUT / "manual-assets")
     shutil.copytree(SRC / "manual-assets", OUT / "manual-assets")
     shutil.copy(SRC / "style.css", OUT / "style.css")
+    for name in ("favicon.ico", "favicon.svg"):
+        shutil.copy(SRC / name, OUT / name)
 
     contact = CONTACT_HTML or (
         "프로그램과 실행 암호를 전달해 준 관리자에게 문의해 주세요. "
