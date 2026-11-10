@@ -53,7 +53,7 @@ PAGES = [
      "2026-10-13"),
     ("manual-adb", "manual", "안드로이드 앱 매크로 연결하기", "5. 안드로이드 앱 매크로 연결하기 (USB 디버깅)",
      "개발자 모드와 USB 디버깅을 켜고 PC와 휴대폰을 연결하는 과정을 사진과 함께 단계별로 설명합니다.",
-     "2026-10-13"),
+     "2026-11-10"),
     ("manual-brand", "manual", "브랜드평판(📊 추천) 사용법", "6. 브랜드평판(📊 추천) 사용법",
      "브랜드평판 탭의 카테고리 10종, 하루 한도, 응원 코멘트, 결과 요약 읽는 법을 설명합니다.",
      "2026-10-13"),
@@ -83,16 +83,16 @@ PAGES = [
      "2026-10-13"),
     ("guide-usb-debugging", "guide", "제조사별 USB 디버깅 켜는 법", "제조사별 개발자 옵션·USB 디버깅 켜는 법",
      "삼성 갤럭시, 샤오미·레드미·포코, 구글 픽셀, LG 휴대폰에서 개발자 옵션과 USB 디버깅을 켜는 메뉴 위치를 정리했습니다.",
-     "2026-10-13"),
+     "2026-11-10"),
     ("guide-connection", "guide", "휴대폰 연결이 안 될 때", "휴대폰이 PC에 연결되지 않을 때 점검 순서",
      "USB 디버깅을 켰는데도 PC가 휴대폰을 찾지 못할 때 케이블, 포트, 허용 팝업, 드라이버 순서로 원인을 좁히는 방법입니다.",
-     "2026-10-13"),
+     "2026-11-10"),
     ("guide-playlist-patterns", "guide", "재생목록 패턴 고르기", "재생목록 핵심영상 패턴 5종 비교",
      "시간 내 중복 방지, 시간+연속 중복 방지, 퐁당퐁당, 퐁당당퐁당, 퐁당당당퐁당당 패턴의 배치 규칙과 고르는 기준을 예시와 함께 설명합니다.",
      "2026-10-13"),
     ("guide-unattended", "guide", "매일 자동으로 돌릴 때 준비", "매일 자동으로 돌릴 때 PC와 휴대폰 준비",
      "작업 스케줄러로 매일 무인 실행할 때 절전 모드, 화면 잠금, 휴대폰 화면 꺼짐, 결과 확인을 준비하는 방법입니다.",
-     "2026-10-13"),
+     "2026-11-10"),
     ("changelog", "site", "업데이트 내역", "업데이트 내역",
      "매크로의 버전별 변경 내용을 날짜순으로 정리한 업데이트 기록입니다.",
      None),  # 날짜는 최신 버전 배포일을 쓴다
@@ -101,7 +101,7 @@ PAGES = [
      "2026-10-13"),
     ("privacy", "site", "개인정보처리방침", "개인정보처리방침",
      "이 사이트가 수집하는 정보, 광고 쿠키, 프로그램이 PC에 저장하는 정보에 대한 안내입니다.",
-     "2026-10-13"),
+     "2026-11-10"),
 ]
 
 GROUP_TITLES = {"manual": "사용 설명서", "guide": "가이드", "site": "사이트"}
@@ -239,6 +239,40 @@ TEMPLATE = """<!DOCTYPE html>
 """
 
 
+def render_coupang_box():
+    """<!-- coupang:cable --> 표시를 쿠팡 파트너스 상품 상자로 바꾼다. 링크는 coupang.json 의 값을 그대로 쓴다."""
+    data = json.loads((SRC / "coupang.json").read_text(encoding="utf-8"))
+    by_id = {p["id"]: p for p in data["products"]}
+    marks = "①②③④"
+    items = []
+    for n, pid in enumerate(data["box"]):
+        p = by_id[pid]
+        link = html.escape(p["link"], quote=True)
+        attrs = f'href="{link}" target="_blank" rel="sponsored nofollow noopener" referrerpolicy="unsafe-url"'
+        title = html.escape(p["title"], quote=True)
+        price = f'{p["price"]:,}원'
+        items.append(
+            '<li class="shop-item">'
+            f'<a class="shop-img" {attrs}><img src="{html.escape(p["image"], quote=True)}" alt="{title}" '
+            'width="212" height="212" loading="lazy"></a>'
+            '<div class="shop-info">'
+            f'<a class="shop-title" {attrs}><span class="shop-no">{marks[n]}</span> {html.escape(p["title"])}</a>'
+            f'<p class="shop-desc">{html.escape(p["desc"])}</p>'
+            f'<p class="shop-price">{price}</p>'
+            f'<a class="shop-btn" {attrs}>쿠팡에서 보기</a>'
+            '</div></li>'
+        )
+    y, m, d = data["priceDate"].split("-")
+    return (
+        '<aside class="shop-box">'
+        '<strong class="shop-head">참고: 데이터 전송 케이블</strong>'
+        f'<p class="shop-notice">{html.escape(data["notice"])}</p>'
+        f'<ol class="shop-list">{"".join(items)}</ol>'
+        f'<p class="shop-foot">가격은 {y}년 {int(m)}월 {int(d)}일 기준이며 바뀔 수 있습니다.</p>'
+        '</aside>'
+    )
+
+
 def build(changelog_repo=None):
     changelog_path = SRC / "changelog.json"
     if changelog_repo:
@@ -277,6 +311,7 @@ def build(changelog_repo=None):
         body = (SRC / "pages" / f"{slug}.html").read_text(encoding="utf-8")
         for token, value in tokens.items():
             body = body.replace(token, value)
+        body = body.replace("<!-- coupang:cable -->", render_coupang_box())
         leftover = re.search(r"\{\{[A-Z_]+\}\}", body)
         if leftover:
             raise SystemExit(f"{slug}: 알 수 없는 치환 토큰 {leftover.group(0)}")

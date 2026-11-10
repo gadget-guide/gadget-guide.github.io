@@ -451,3 +451,30 @@ footer.page-foot a { color: var(--text-muted); }
   .page-nav-footer .spacer { display: none; }
   .callout { padding: 14px 16px; }
 }
+
+/* ---- 쿠팡 파트너스 상품 상자 ---- */
+.shop-box {
+  background: var(--soft);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin: 18px 0;
+  font-size: 0.92rem;
+}
+.shop-head { display: block; font-size: 0.86rem; font-weight: 650; color: var(--text); }
+.shop-notice, .shop-foot { margin: 4px 0 10px; font-size: 0.76rem; color: var(--text-muted); }
+.shop-foot { margin: 10px 0 0; }
+.shop-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.shop-item { display: flex; gap: 12px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 10px; margin: 0; }
+.shop-img img { display: block; width: 84px; height: 84px; object-fit: cover; border-radius: 6px; }
+.shop-info { min-width: 0; display: flex; flex-direction: column; }
+.shop-info p { margin: 4px 0 0; }
+.shop-title { font-weight: 600; color: var(--text); text-decoration: none; line-height: 1.4; }
+.shop-no { color: var(--accent); }
+.shop-desc { font-size: 0.82rem; color: var(--text-2); }
+.shop-price { font-weight: 650; color: var(--text); }
+.shop-btn { align-self: flex-start; margin-top: 8px; padding: 5px 12px; border-radius: 6px; background: var(--accent); color: #fff; font-size: 0.82rem; text-decoration: none; }
+.shop-btn:hover { background: var(--accent-dark); }
+@media (max-width: 720px) {
+  .shop-list { grid-template-columns: 1fr; }
+}
