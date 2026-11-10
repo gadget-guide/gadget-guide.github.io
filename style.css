@@ -473,6 +473,10 @@ footer.page-foot a { color: var(--text-muted); }
 .shop-no { color: var(--accent); }
 .shop-desc { font-size: 0.82rem; color: var(--text-2); }
 .shop-price { font-weight: 650; color: var(--text); }
+section.block a.shop-btn, section.block a.shop-btn:visited { color: #fff; text-decoration: none; }
+section.block a.shop-btn:hover { color: #fff; }
+section.block a.shop-title { color: var(--text); text-decoration: none; }
+section.block a.shop-title:hover { color: var(--accent-dark); }
 .shop-btn { align-self: flex-start; margin-top: 8px; padding: 5px 12px; border-radius: 6px; background: var(--accent); color: #fff; font-size: 0.82rem; text-decoration: none; }
 .shop-btn:hover { background: var(--accent-dark); }
 @media (max-width: 720px) {
